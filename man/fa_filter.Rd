@@ -5,7 +5,7 @@
 \title{fa_filter}
 \usage{
 fa_filter(fasfile, pattern, by = "description", ignore.case = FALSE,
-  outfile = NULL)
+  outfile = NULL, type = "interleaved")
 }
 \arguments{
 \item{fasfile}{input fasta file}
@@ -17,6 +17,8 @@ fa_filter(fasfile, pattern, by = "description", ignore.case = FALSE,
 \item{ignore.case}{logical}
 
 \item{outfile}{output file}
+
+\item{type}{one of 'interleaved' and 'sequential'}
 }
 \value{
 BStringSet object

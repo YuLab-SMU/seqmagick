@@ -7,6 +7,7 @@
 ##' @param by one of 'description' and 'sequence'
 ##' @param ignore.case logical
 ##' @param outfile output file
+##' @param type one of 'interleaved' and 'sequential'
 ##' @return BStringSet object
 ##' @importFrom Biostrings readBStringSet
 ##' @importFrom Biostrings matchPattern
@@ -14,7 +15,9 @@
 ##' @importFrom magrittr %<>%
 ##' @export
 ##' @author Guangchuang Yu
-fa_filter <- function(fasfile, pattern, by='description', ignore.case=FALSE, outfile=NULL) {
+fa_filter <- function(fasfile, pattern, by='description', ignore.case=FALSE,
+                      outfile=NULL, type="interleaved") {
+    
     by <- match.arg(by, c("description", "sequence"))
     
     fas <- readBStringSet(fasfile)
@@ -43,7 +46,7 @@ fa_filter <- function(fasfile, pattern, by='description', ignore.case=FALSE, out
     
     res <- fas[idx]
     if (!is.null(outfile)) {
-        writeXStringSet(res, filepath=outfile)
+       fa_write(res, filepath=outfile, type)
     }
     invisible(res)
 }
