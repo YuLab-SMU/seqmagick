@@ -1,5 +1,7 @@
 CHANGES IN VERSION 0.0.1
 ------------------------
+ o fa_read: read fasta file <2016-06-15, Wed>
+ o fa_consensus: consensus sequence of aligned fasta sequences <2016-06-15, Wed>
  o fa_to_interleaved & fa_to_sequential: fasta format conversion <2016-06-15, Wed>
  o fa_combine: combine 2 fasta file <2016-06-15, Wed>
  o fa_filter: fasta filter <2016-06-09, Thu>
