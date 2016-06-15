@@ -46,7 +46,7 @@ fa_filter <- function(fasfile, pattern, by='description', ignore.case=FALSE,
     
     res <- fas[idx]
     if (!is.null(outfile)) {
-       fa_write(res, filepath=outfile, type)
+       fa_write(res, outfile, type)
     }
     invisible(res)
 }
