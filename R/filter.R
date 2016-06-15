@@ -1,4 +1,4 @@
-##' fasta filter by search pattern
+##' fasta filter by searching pattern
 ##'
 ##' 
 ##' @title fa_filter
@@ -10,31 +10,52 @@
 ##' @param type one of 'interleaved' and 'sequential'
 ##' @return BStringSet object
 ##' @importFrom Biostrings readBStringSet
-##' @importFrom Biostrings matchPattern
-##' @importFrom Biostrings writeXStringSet
-##' @importFrom magrittr %<>%
 ##' @export
 ##' @author Guangchuang Yu
 fa_filter <- function(fasfile, pattern, by='description', ignore.case=FALSE,
                       outfile=NULL, type="interleaved") {
     
-    by <- match.arg(by, c("description", "sequence"))
+
     
     fas <- readBStringSet(fasfile)
 
+    res <- bs_filter(fas, pattern, by, ignore.case)
+    
+    if (!is.null(outfile)) {
+       fa_write(res, outfile, type)
+    }
+    
+    invisible(res)
+}
+
+##' biological sequence filter by searching pattern
+##'
+##' 
+##' @title bs_filter
+##' @param x BStringSet object
+##' @param pattern keyword for filter
+##' @param by one of 'description' and 'sequence'
+##' @param ignore.case logical
+##' @return BStringSet object
+##' @importFrom Biostrings matchPattern
+##' @importFrom magrittr %<>%
+##' @export
+##' @author Guangchuang Yu
+bs_filter <- function(x, pattern, by='description', ignore.case=FALSE) {
+    by <- match.arg(by, c("description", "sequence"))
+    
     if (by == 'description') {
-        desc <- names(fas)
+        desc <- names(x)
         if (ignore.case) {
             pattern %<>% toupper
             desc %<>% toupper
         }
-
         idx <- grep(pattern, desc)
     } else {
         if (ignore.case) {
-            hit <- sapply(fas, function(x) matchPattern(toupper(pattern), toupper(x)))
+            hit <- sapply(x, function(y) matchPattern(toupper(pattern), toupper(y)))
         } else {
-            hit <- sapply(fas, function(x) matchPattern(pattern, x))
+            hit <- sapply(x, function(y) matchPattern(pattern, y))
         }
         idx <- which(sapply(hit, length) > 0)
     }
@@ -44,9 +65,5 @@ fa_filter <- function(fasfile, pattern, by='description', ignore.case=FALSE,
         return(NULL)
     }
     
-    res <- fas[idx]
-    if (!is.null(outfile)) {
-       fa_write(res, outfile, type)
-    }
-    invisible(res)
+    return(x[idx])
 }

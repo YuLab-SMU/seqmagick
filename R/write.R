@@ -6,6 +6,7 @@
 ##' @param outfile output file
 ##' @param type one of interleaved and sequential
 ##' @return NULL
+##' @importFrom Biostrings writeXStringSet
 ##' @export
 ##' @author Guangchuang Yu
 ##' @references \url{http://evolution.genetics.washington.edu/phylip/doc/sequence.html}
@@ -16,10 +17,11 @@ fa_write <- function(x, outfile, type="interleaved") {
 seq_write <- function(x, filepath, type="interleaved", format) {
     type <- match.arg(type, c("interleaved", "sequential"))
     if (type == "interleaved") {
-        writeXStringSet(x, filepath, format)
+        .write <- writeXStringSet
     } else {
-        writeXStringSet2(x, filepath, format)
+        .write <- writeXStringSet2
     }
+    .write(x, filepath, format = format)
 }
 
 writeXStringSet2 <- function(x, filepath, format="fasta") {

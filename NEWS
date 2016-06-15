@@ -1,3 +1,7 @@
+CHANGES IN VERSION 0.0.2
+------------------------
+ o bs_filter: sequence filter for BStringSet object <2016-06-15, Wed>
+ 
 CHANGES IN VERSION 0.0.1
 ------------------------
  o fa_read: read fasta file <2016-06-15, Wed>
