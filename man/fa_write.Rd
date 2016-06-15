@@ -4,12 +4,12 @@
 \alias{fa_write}
 \title{fa_write}
 \usage{
-fa_write(x, filepath, type = "interleaved")
+fa_write(x, outfile, type = "interleaved")
 }
 \arguments{
 \item{x}{XStringSet object}
 
-\item{filepath}{output file}
+\item{outfile}{output file}
 
 \item{type}{one of interleaved and sequential}
 }

@@ -1,5 +1,6 @@
 CHANGES IN VERSION 0.0.1
 ------------------------
+ o fa_to_interleaved & fa_to_sequential: fasta format conversion <2016-06-15, Wed>
  o fa_combine: combine 2 fasta file <2016-06-15, Wed>
  o fa_filter: fasta filter <2016-06-09, Thu>
  o fa_write: output fasta file to interleaved or sequential format <2016-06-09, Thu> 

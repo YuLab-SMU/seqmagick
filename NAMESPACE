@@ -2,6 +2,8 @@
 
 export(fa_combine)
 export(fa_filter)
+export(fa_to_interleaved)
+export(fa_to_sequential)
 export(fa_write)
 importFrom(Biostrings,matchPattern)
 importFrom(Biostrings,readBStringSet)

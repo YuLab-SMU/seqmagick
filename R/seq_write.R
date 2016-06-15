@@ -3,14 +3,14 @@
 ##' 
 ##' @title fa_write
 ##' @param x XStringSet object
-##' @param filepath output file
+##' @param outfile output file
 ##' @param type one of interleaved and sequential
 ##' @return NULL
 ##' @export
 ##' @author Guangchuang Yu
 ##' @references \url{http://evolution.genetics.washington.edu/phylip/doc/sequence.html}
-fa_write <- function(x, filepath, type="interleaved") {
-    seq_write(x, filepath, type, format="fasta")
+fa_write <- function(x, outfile, type="interleaved") {
+    seq_write(x, filepath=outfile, type, format="fasta")
 }
 
 seq_write <- function(x, filepath, type="interleaved", format) {

@@ -19,3 +19,4 @@ fa_combine <- function(file1, file2, outfile=NULL, type="interleaved") {
     }
     invisible(fa)
 }
+
