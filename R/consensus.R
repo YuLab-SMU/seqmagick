@@ -1,7 +1,7 @@
-##' consensus of aligned fasta file
+##' consensus of aligned sequences
 ##'
 ##' 
-##' @title fa_consensus
+##' @title bs_consensus
 ##' @param x BStringSet object
 ##' @param type currently, only DNA supported
 ##' @return consensus sequence string
@@ -9,7 +9,7 @@
 ##' @importFrom Biostrings consensusMatrix
 ##' @export
 ##' @author Guangchuang Yu
-fa_consensus <- function(x, type="DNA") {
+bs_consensus <- function(x, type="DNA") {
     if (length(unique(width(x))) != 1) {
         stop("input sequences were not aligned...")
     }
