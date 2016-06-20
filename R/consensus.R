@@ -1,6 +1,19 @@
 ##' consensus of aligned sequences
 ##'
 ##' 
+##' @title consensus
+##' @param x XStringSet or XMultipleAlignment object
+##' @param type currently, only DNA supported
+##' @return consensus sequence string
+##' @export
+##' @author Guangchuang Yu
+consensus <- function(x, type="DNA") {
+    BStringSet(x) %>% bs_consensus
+}
+
+##' consensus of aligned sequences
+##'
+##' 
 ##' @title bs_consensus
 ##' @param x BStringSet object
 ##' @param type currently, only DNA supported

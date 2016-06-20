@@ -13,7 +13,12 @@ Imports:
     magrittr,
     muscle,
     utils
+Suggests:
+    knitr
+VignetteBuilder: knitr
 ByteCompile: true
+URL: https://github.com/GuangchuangYu/seqmagick
+BugReports: https://github.com/GuangchuangYu/seqmagick/issues
 License: Artistic-2.0
 Encoding: UTF-8
 LazyData: true

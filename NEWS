@@ -1,5 +1,6 @@
 CHANGES IN VERSION 0.0.2
 ------------------------
+ o add vignette <2016-06-20, Mon>
  o bs_align: sequence alignment <2016-06-20, Mon>
  o bs_hamming: hamming distance of sequences <2016-06-15, Wed>
  o bs_filter: sequence filter for BStringSet object <2016-06-15, Wed>

@@ -2,17 +2,19 @@
 ##'
 ##' 
 ##' @title bs_align
-##' @param x DNAStringSet
+##' @param x BStringSet or DNAStringSet
 ##' @param method alignment method
 ##' @param ... additional parameters
-##' @return DNAStringSet
+##' @return BStringSet
 ##' @importFrom muscle muscle
+##' @importFrom Biostrings DNAStringSet
+##' @importFrom Biostrings BStringSet
 ##' @export
 ##' @author Guangchuang Yu
 bs_align <- function(x, method="muscle", ...) {
     method <- match.arg(method, c("muscle")) ## currently, only muscle is supported
     if (method == 'muscle') 
-        y <- muscle(x, ...)
+        y <- muscle(DNAStringSet(x), ...)
     
-    DNAStringSet(y)
+    BStringSet(y)
 }

@@ -7,14 +7,14 @@
 bs_align(x, method = "muscle", ...)
 }
 \arguments{
-\item{x}{DNAStringSet}
+\item{x}{BStringSet or DNAStringSet}
 
 \item{method}{alignment method}
 
 \item{...}{additional parameters}
 }
 \value{
-DNAStringSet
+BStringSet
 }
 \description{
 alignment
