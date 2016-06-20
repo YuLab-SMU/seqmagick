@@ -11,6 +11,7 @@ Depends:
 Imports:
     Biostrings,
     magrittr,
+    muscle,
     utils
 ByteCompile: true
 License: Artistic-2.0
