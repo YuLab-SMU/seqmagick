@@ -1,3 +1,7 @@
+CHANGES IN VERSION 0.0.3
+------------------------
+ o phy_write, phy_read, fas2phy, phy2fas <2016-06-28, Tue>
+ 
 CHANGES IN VERSION 0.0.2
 ------------------------
  o add vignette <2016-06-20, Mon>

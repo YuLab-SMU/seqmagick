@@ -6,27 +6,108 @@
 ##' @param outfile output file
 ##' @param type one of interleaved and sequential
 ##' @return NULL
-##' @importFrom Biostrings writeXStringSet
 ##' @export
 ##' @author Guangchuang Yu
 ##' @references \url{http://evolution.genetics.washington.edu/phylip/doc/sequence.html}
 fa_write <- function(x, outfile, type="interleaved") {
-    seq_write(x, filepath=outfile, type, format="fasta")
-}
-
-seq_write <- function(x, filepath, type="interleaved", format) {
     type <- match.arg(type, c("interleaved", "sequential"))
     if (type == "interleaved") {
-        .write <- writeXStringSet
+        fa_write_interleaved(x, outfile)
     } else {
-        .write <- writeXStringSet2
+        fa_write_sequential(x, outfile)
     }
-    .write(x, filepath, format = format)
 }
 
-writeXStringSet2 <- function(x, filepath, format="fasta") {
-    out <- file(filepath, "w")
+##' write phylip file
+##'
+##' 
+##' @title phy_write
+##' @param x XStringSet object
+##' @param outfile output file
+##' @param type one of interleaved and sequential 
+##' @return NULL
+##' @export
+##' @author Guangchuang Yu
+phy_write <- function(x, outfile, type="sequential") {
+    type <- match.arg(type, c("interleaved", "sequential"))
 
+    if (type == "interleaved") {
+        phy_write_interleaved(x, outfile)
+    } else {
+        phy_write_sequential(x, outfile)
+    }
+}
+
+check_alnseq <- function(x) {
+    if (length(unique(width(x))) != 1) {
+        stop("input fasfile should contains aligned sequences with equal length...")
+    }
+}
+
+##' @importFrom Biostrings width
+##' @importFrom Biostrings toString
+phy_write_sequential <- function(x, outfile) {
+    check_alnseq(x)
+
+    w <- width(x[1])
+    out <- file(outfile, "w")
+    header <- paste(length(x), "\t", w)
+    writeLines(header, out)
+    nn <- max(nchar(names(x)))
+    for (i in 1:length(x)) {
+        n <- names(x[i])
+        sep.blank <- paste(rep(" ", nn-nchar(n)+4), sep="", collapse="")
+        line <- paste(n, sep.blank, toString(x[i]), sep="")
+        writeLines(line, out)
+    }
+    close(out)
+}
+
+phy_write_interleaved <- function(x, outfile) {
+    check_alnseq(x)
+    
+    w <- width(x[1])
+    out <- file(outfile, "w")
+    header <- paste(length(x), "\t", w)
+    writeLines(header, out)
+    nn <- max(nchar(names(x)))
+    for (j in 1:ceiling(w/50)) {
+        for (i in seq_along(x)) {
+            if (j == 1) {
+                n <- names(x[i])
+                sep.blank <- paste(rep(" ", nn-nchar(n)+4), sep="", collapse="")
+                preceding <- paste(n, sep.blank)
+            } else {
+                preceding <- paste(rep(" ", nn + 5), sep="", collapse="")
+            }
+            
+            to <- seq(j*5-4, j*5) * 10
+            from <- to - 9
+            if (to[5] > w) {
+                idx <- which(to >= w)[1]
+                from <- from[1:idx]
+                to <- to[1:idx]
+                to[idx] <- w
+            }
+            s <- paste(substring(toString(x[i]), from, to), collapse=" ")
+            line <- paste0(preceding, s)
+            writeLines(line, out)
+        }
+        if (j != ceiling(w/50)) {
+            linebreak=""
+            writeLines(linebreak, out)
+        }
+    }
+    close(out)
+}
+
+##' @importFrom Biostrings writeXStringSet
+fa_write_interleaved <- function(x, outfile) {
+    writeXStringSet(x, filepath=outfile)
+}
+
+fa_write_sequential <- function(x, outfile) {
+    out <- file(outfile, "w")
     desc <- names(x)
 
     if (format == "fasta") {
