@@ -39,7 +39,7 @@ bs <- fa_read(fa_file)
 
 bs_filter(bs, 'ATGAAAGTAAAA', by='sequence')
 
-aln <- bs_filter(bs, 'ATGAAAGTAAAA', by='sequence') %>% DNAStringSet %>% muscle(quiet=TRUE)
+aln <- bs_filter(bs, 'ATGAAAGTAAAA', by='sequence') %>% bs_aln(quiet=TRUE)
 
 aln
 
