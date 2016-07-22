@@ -1,3 +1,7 @@
+CHANGES IN VERSION 0.0.4
+------------------------
+ o fa_rename & bs_rename <2016-07-22, Fri>
+ 
 CHANGES IN VERSION 0.0.3
 ------------------------
  o phy_write, phy_read, fas2phy, phy2fas <2016-06-28, Tue>
