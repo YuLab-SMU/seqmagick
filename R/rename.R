@@ -37,6 +37,8 @@ fa_rename <- function(fasfile, mapping_file, position, sep, replace, prefix, out
 ##' @export
 ##' @author Guangchuang Yu
 bs_rename <- function(x, mapping, position, sep, replace, prefix) {
+    nn <- names(x)
+    
     if (missing(sep)) {
         id <- names(x)
     } else {
@@ -46,11 +48,11 @@ bs_rename <- function(x, mapping, position, sep, replace, prefix) {
     if (!missing(position)) {
         if (missing(sep))
             stop("separator should be provided")
-        nn <- names(x)
+        
         tk <- sapply(tokenize(nn, sep), function(y) y[position])
-
+        
         i <- match(id, mapping[,1])
-
+        
         if (replace) {
             to <- mapping[i,2]
         } else if (prefix) {
@@ -58,7 +60,7 @@ bs_rename <- function(x, mapping, position, sep, replace, prefix) {
         } else {
             to <- paste(tk, mapping[i, 2], sep="")
         }
-
+        
         tks <- tokenize(nn, sep)
         tks <- lapply(seq_along(tks), function(i) {
             tks[[i]][position] <- to[i]
