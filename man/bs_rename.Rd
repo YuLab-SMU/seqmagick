@@ -4,7 +4,7 @@
 \alias{bs_rename}
 \title{bs_rename}
 \usage{
-bs_rename(x, mapping, position, sep, replace, prefix)
+bs_rename(x, mapping, position, sep, mode)
 }
 \arguments{
 \item{x}{BStringSet object}
@@ -15,9 +15,7 @@ bs_rename(x, mapping, position, sep, replace, prefix)
 
 \item{sep}{sepator to divide token}
 
-\item{replace}{logical, whether replace token or not}
-
-\item{prefix}{logical. If replace is FALSE, whether add to prefix or suffix}
+\item{mode}{one of 'replace', 'prefix' or 'suffix'}
 }
 \value{
 BStringSet

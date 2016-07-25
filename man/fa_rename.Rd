@@ -4,7 +4,7 @@
 \alias{fa_rename}
 \title{fa_rename}
 \usage{
-fa_rename(fasfile, mapping_file, position, sep, replace, prefix, outfile)
+fa_rename(fasfile, mapping_file, position, sep, mode, outfile)
 }
 \arguments{
 \item{fasfile}{fasta file}
@@ -15,9 +15,7 @@ fa_rename(fasfile, mapping_file, position, sep, replace, prefix, outfile)
 
 \item{sep}{sepator to divide token}
 
-\item{replace}{logical, whether replace token or not}
-
-\item{prefix}{logical. If replace is FALSE, whether add to prefix or suffix}
+\item{mode}{one of 'replace', 'prefix' or 'suffix'}
 
 \item{outfile}{output file}
 }

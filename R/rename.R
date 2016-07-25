@@ -6,17 +6,16 @@
 ##' @param mapping_file mapping file
 ##' @param position rename token at specific position
 ##' @param sep sepator to divide token
-##' @param replace logical, whether replace token or not
-##' @param prefix logical. If replace is FALSE, whether add to prefix or suffix
+##' @param mode one of 'replace', 'prefix' or 'suffix'
 ##' @param outfile output file
 ##' @return BStringSet object
 ##' @importFrom utils read.delim
 ##' @export
 ##' @author Guangchuang Yu
-fa_rename <- function(fasfile, mapping_file, position, sep, replace, prefix, outfile) {
+fa_rename <- function(fasfile, mapping_file, position, sep, mode, outfile) {
     x <- fa_read(fasfile)
     mapping <- read.delim(mapping_file, header=FALSE, stringsAsFactors=FALSE)
-    y <- bs_rename(x, mapping, position, sep, replace, prefix)
+    y <- bs_rename(x, mapping, position, sep, mode)
     if (!missing(outfile)) {
         fa_write(y, outfile)
     }
@@ -31,12 +30,13 @@ fa_rename <- function(fasfile, mapping_file, position, sep, replace, prefix, out
 ##' @param mapping two column data.frame
 ##' @param position rename token at specific position
 ##' @param sep sepator to divide token
-##' @param replace logical, whether replace token or not
-##' @param prefix logical. If replace is FALSE, whether add to prefix or suffix
+##' @param mode one of 'replace', 'prefix' or 'suffix'
 ##' @return BStringSet
 ##' @export
 ##' @author Guangchuang Yu
-bs_rename <- function(x, mapping, position, sep, replace, prefix) {
+bs_rename <- function(x, mapping, position, sep, mode) {
+    mode <- match.arg(mode, c("replace", "prefix", "suffix"))
+    
     nn <- names(x)
     
     if (missing(sep)) {
@@ -53,9 +53,9 @@ bs_rename <- function(x, mapping, position, sep, replace, prefix) {
         
         i <- match(id, mapping[,1])
         
-        if (replace) {
+        if (mode == "replace") {
             to <- mapping[i,2]
-        } else if (prefix) {
+        } else if (mode == "prefix") {
             to <- paste(mapping[i, 2], tk, sep="")
         } else {
             to <- paste(tk, mapping[i, 2], sep="")
@@ -66,14 +66,14 @@ bs_rename <- function(x, mapping, position, sep, replace, prefix) {
             tks[[i]][position] <- to[i]
             tks[[i]]
         })
-
+        
         id2 <- sapply(tks, paste0, collapse=sep)
         
     } else {
-        if (replace) {
+        if (mode == "replace") {
             i <- match(id, mapping[,1])
             id2 <- mapping[i, 2]
-        } else if (prefix) {
+        } else if (mode == "prefix") {
             id2 <- paste(mapping[i,2], id, sep="")
         } else {
             id2 <- paste(id, mapping[i, 2], sep="")
