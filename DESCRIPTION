@@ -1,6 +1,6 @@
 Package: seqmagick
 Title: Sequence Manipulation
-Version: 0.0.4
+Version: 0.0.5
 Authors@R: person("Guangchuang", "Yu",
 	   	  email = "guangchuangyu@gmail.com",
 		  role = c("aut", "cre")
