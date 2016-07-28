@@ -36,7 +36,7 @@ library("seqmagick")
 
 ## Genbank
 
-```{r eval=FALSE}
+```{r}
 tmpgb <- tempfile(fileext = '.gb')
 tmpfa <- tempfile(fileext = '.fa')
 download_genbank(acc='AB115403', format='genbank', outfile=tmpgb)
