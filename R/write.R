@@ -110,11 +110,9 @@ fa_write_sequential <- function(x, outfile) {
     out <- file(outfile, "w")
     desc <- names(x)
 
-    if (format == "fasta") {
-        for (i in seq_along(desc)) {
-            writeLines(paste('>', desc[i]), out)
-            writeLines(toString(x[i]), out)
-        }
+    for (i in seq_along(desc)) {
+        writeLines(paste('>', desc[i]), out)
+        writeLines(toString(x[i]), out)
     }
     
     close(out)
