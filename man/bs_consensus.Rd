@@ -4,12 +4,14 @@
 \alias{bs_consensus}
 \title{bs_consensus}
 \usage{
-bs_consensus(x, type = "DNA")
+bs_consensus(x, type = "DNA", r = 1)
 }
 \arguments{
 \item{x}{BStringSet object}
 
 \item{type}{currently, only DNA supported}
+
+\item{r}{if any NT > r, it will be selected as representative base}
 }
 \value{
 consensus sequence string

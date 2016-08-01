@@ -17,12 +17,13 @@ consensus <- function(x, type="DNA") {
 ##' @title bs_consensus
 ##' @param x BStringSet object
 ##' @param type currently, only DNA supported
+##' @param r if any NT > r, it will be selected as representative base
 ##' @return consensus sequence string
 ##' @importFrom Biostrings width
 ##' @importFrom Biostrings consensusMatrix
 ##' @export
 ##' @author Guangchuang Yu
-bs_consensus <- function(x, type="DNA") {
+bs_consensus <- function(x, type="DNA", r=1) {
     if (length(unique(width(x))) != 1) {
         stop("input sequences were not aligned...")
     }
@@ -48,7 +49,12 @@ bs_consensus <- function(x, type="DNA") {
     
     if (sum(nn > 1)> 0) {
         ambiguity_alphabet <- apply(y[1:4, nn > 1, drop=FALSE], 2, function(n) {
-            ii <- which(n > 0)
+            rr <- n/sum(n)
+            if (any(rr > r)) {
+                ii <- which(rr > r)
+            } else {
+                ii <- which(rr > 0)
+            }
             ambiguity_code(alphabet[ii])
         })
         cns[nn > 1] <- ambiguity_alphabet
