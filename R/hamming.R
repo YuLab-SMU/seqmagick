@@ -1,6 +1,6 @@
 ##' hamming distances of sequences
 ##'
-##' 
+##'
 ##' @title bs_hamming
 ##' @param x BStringSet object
 ##' @param count_indel whether count indel or not
@@ -11,7 +11,7 @@
 ##' @export
 ##' @author Guangchuang Yu
 bs_hamming <- function(x, count_indel=FALSE, ...) {
-    n <- length(x) 
+    n <- length(x)
     if (n < 2) {
         stop("at least 2 sequences was expected...")
     }
@@ -24,7 +24,7 @@ bs_hamming <- function(x, count_indel=FALSE, ...) {
     }
 
     res <- matrix(NA, nrow=n, ncol=n)
-    colnames(res) <- rownames(res) <- names(seqs)
+    colnames(res) <- rownames(res) <- names(x)
     seqs <- lapply(x, function(xx) {
         y <- toString(xx)
         substring(y, 1:nchar(y), 1:nchar(y))
@@ -71,7 +71,7 @@ charVector_hamming <- function(seq1, seq2, count_indel, type = "mapping", thresh
     type <- match.arg(type, c("mapping", "alignment"))
     ## mapping for mapping short read to long sequence
     ## alignment for aligning sequences of similar lengths
-    
+
     ## for mapping
     ##
     ##
@@ -94,14 +94,14 @@ charVector_hamming <- function(seq1, seq2, count_indel, type = "mapping", thresh
             count_indel <- TRUE
         }
     }
-    
+
     ii <- which(seq1 != seq2)
-    
+
     if (count_indel == FALSE) {
         message("--> indel will not count...")
         ii <- ii[seq1[ii] != '-' & seq2[ii] != '-']
     }
-    
+
     return(length(ii))
 }
 
