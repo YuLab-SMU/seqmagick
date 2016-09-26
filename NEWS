@@ -1,5 +1,6 @@
 CHANGES IN VERSION 0.0.5
 ------------------------
+ o replaceInside <2016-09-26, Mon>
  o download_genbank for downloading sequence from genbank by accession number <2016-07-28, Thu>
  
 CHANGES IN VERSION 0.0.4
