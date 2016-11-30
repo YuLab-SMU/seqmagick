@@ -12,10 +12,10 @@ Imports:
     Biostrings,
     magrittr,
     muscle,
-    prettydoc,
     utils
 Suggests:
-    knitr
+    knitr,
+    prettydoc
 VignetteBuilder: knitr
 ByteCompile: true
 URL: https://github.com/GuangchuangYu/seqmagick
