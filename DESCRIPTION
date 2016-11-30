@@ -12,6 +12,7 @@ Imports:
     Biostrings,
     magrittr,
     muscle,
+    prettydoc,
     utils
 Suggests:
     knitr

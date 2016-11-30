@@ -1,6 +1,6 @@
 ##' download genbank or fasta file by accession number
 ##'
-##' 
+##'
 ##' @title download_genbank
 ##' @param acc accession number(s)
 ##' @param db supported db, currently 'nuccore'
@@ -36,15 +36,15 @@ download_genbank_item <- function(acc, db="nuccore", format = "genbank", outfile
     }
     url <- paste0("www.ncbi.nlm.nih.gov/sviewer/viewer.cgi?tool=portal&sendto=on&log$=seqview&db=",
                   db, '&dopt=', format, '&sort=&val=', acc)
-    
+
     if (is.null(outfile)) {
         suffix <- '.gb'
         if (format == 'fasta')
             suffix <- '.fa'
         outfile <- paste0(acc, suffix)
     }
-    
-    download.file(url=url, destfile = outfile, method="curl")
+
+    download.file(url=url, destfile = outfile, method="wget")
     invisible(outfile)
 }
 

@@ -8,9 +8,11 @@ author: "\\
 date: "`r Sys.Date()`"
 bibliography: seqmagick.bib
 csl: nature.csl
-output: 
-  html_document:
+output:
+  prettydoc::html_pretty:
     toc: true
+    highlight: github
+    theme: cayman
   pdf_document:
     toc: true
 vignette: >
@@ -63,7 +65,7 @@ fa_read(fa2) %>% bs_aln(quiet=TRUE) %>% fa_write(alnfas)
 tmpphy <- tempfile(fileext = ".phy")
 fas2phy(alnfas, tmpphy, type = 'sequential')
 readLines(tmpphy)[1:3]
-``` 
+```
 
 `seqmagick` supports both `sequential` and `interleaved` formats, users can specify the format by `type` parameter.
 
