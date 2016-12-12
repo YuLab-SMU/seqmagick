@@ -7,7 +7,7 @@ Authors@R: person("Guangchuang", "Yu",
 		  )
 Description: Sequence Manipulation.
 Depends:
-    R (>= 3.3.0)
+    R (>= 3.2.0)
 Imports:
     Biostrings,
     magrittr,
