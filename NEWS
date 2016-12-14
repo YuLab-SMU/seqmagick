@@ -1,23 +1,27 @@
+CHANGES IN VERSION 0.0.6
+------------------------
+ o bug fixed of phy_read for sequential format <2016-12-14, Wed>
+
 CHANGES IN VERSION 0.0.5
 ------------------------
  o replaceInside <2016-09-26, Mon>
  o download_genbank for downloading sequence from genbank by accession number <2016-07-28, Thu>
- 
+
 CHANGES IN VERSION 0.0.4
 ------------------------
  o fa_rename & bs_rename <2016-07-22, Fri>
- 
+
 CHANGES IN VERSION 0.0.3
 ------------------------
  o phy_write, phy_read, fas2phy, phy2fas <2016-06-28, Tue>
- 
+
 CHANGES IN VERSION 0.0.2
 ------------------------
  o add vignette <2016-06-20, Mon>
  o bs_align: sequence alignment <2016-06-20, Mon>
  o bs_hamming: hamming distance of sequences <2016-06-15, Wed>
  o bs_filter: sequence filter for BStringSet object <2016-06-15, Wed>
- 
+
 CHANGES IN VERSION 0.0.1
 ------------------------
  o fa_read: read fasta file <2016-06-15, Wed>
@@ -25,4 +29,4 @@ CHANGES IN VERSION 0.0.1
  o fa_to_interleaved & fa_to_sequential: fasta format conversion <2016-06-15, Wed>
  o fa_combine: combine 2 fasta file <2016-06-15, Wed>
  o fa_filter: fasta filter <2016-06-09, Thu>
- o fa_write: output fasta file to interleaved or sequential format <2016-06-09, Thu> 
+ o fa_write: output fasta file to interleaved or sequential format <2016-06-09, Thu>
