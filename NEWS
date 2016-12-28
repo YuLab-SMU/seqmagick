@@ -1,3 +1,7 @@
+CHANGES IN VERSION 0.0.7
+------------------------
+ o bam2DNAStringSet function <2016-12-28, Wed>
+
 CHANGES IN VERSION 0.0.6
 ------------------------
  o bug fixed of phy_read for sequential format <2016-12-14, Wed>

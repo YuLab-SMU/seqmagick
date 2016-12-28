@@ -1,6 +1,6 @@
 Package: seqmagick
 Title: Sequence Manipulation
-Version: 0.0.6
+Version: 0.0.7
 Authors@R: person("Guangchuang", "Yu",
 	   	  email = "guangchuangyu@gmail.com",
 		  role = c("aut", "cre")
@@ -10,8 +10,12 @@ Depends:
     R (>= 3.2.0)
 Imports:
     Biostrings,
+    GenomicAlignments,
+    GenomicRanges,
+    IRanges,
     magrittr,
     muscle,
+    Rsamtools,
     utils
 Suggests:
     knitr,
