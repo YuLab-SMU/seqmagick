@@ -6,11 +6,12 @@
 ##' @param db supported db, currently 'nuccore'
 ##' @param format one of 'genbank' or 'fasta'
 ##' @param outfile output file, by default, acc.gb or acc.fa
+##' @param ... additional parameters for download.file
 ##' @return output file vector
 ##' @importFrom magrittr %>%
 ##' @export
 ##' @author Guangchuang Yu
-download_genbank <- function(acc, db="nuccore", format = "genbank", outfile=NULL) {
+download_genbank <- function(acc, db="nuccore", format = "genbank", outfile=NULL, ...) {
     if (!is.null(outfile) && (length(outfile) != length(acc))) {
         stop("'outfile' & 'acc' should be equal length...")
     }
@@ -23,13 +24,13 @@ download_genbank <- function(acc, db="nuccore", format = "genbank", outfile=NULL
         } else {
             of <- outfile[i]
         }
-        ofs[i] <- download_genbank_item(acc[i], db, format, of)
+        ofs[i] <- download_genbank_item(acc[i], db, format, of, ...)
     }
     invisible(ofs)
 }
 
 ##' @importFrom utils download.file
-download_genbank_item <- function(acc, db="nuccore", format = "genbank", outfile=NULL) {
+download_genbank_item <- function(acc, db="nuccore", format = "genbank", outfile=NULL, ...) {
     format <- match.arg(format, c('genbank', 'fasta'))
     if (db != "nuccore") {
         stop("currently, only nuccore is supported...")
@@ -44,7 +45,7 @@ download_genbank_item <- function(acc, db="nuccore", format = "genbank", outfile
         outfile <- paste0(acc, suffix)
     }
 
-    download.file(url=url, destfile = outfile, method="wget")
+    download.file(url=url, destfile = outfile, method="wget", ...)
     invisible(outfile)
 }
 

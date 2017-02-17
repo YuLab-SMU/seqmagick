@@ -4,7 +4,8 @@
 \alias{download_genbank}
 \title{download_genbank}
 \usage{
-download_genbank(acc, db = "nuccore", format = "genbank", outfile = NULL)
+download_genbank(acc, db = "nuccore", format = "genbank", outfile = NULL,
+  ...)
 }
 \arguments{
 \item{acc}{accession number(s)}
@@ -14,6 +15,8 @@ download_genbank(acc, db = "nuccore", format = "genbank", outfile = NULL)
 \item{format}{one of 'genbank' or 'fasta'}
 
 \item{outfile}{output file, by default, acc.gb or acc.fa}
+
+\item{...}{additional parameters for download.file}
 }
 \value{
 output file vector
