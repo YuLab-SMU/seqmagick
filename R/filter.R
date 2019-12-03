@@ -15,8 +15,6 @@
 fa_filter <- function(fasfile, pattern, by='description', ignore.case=FALSE,
                       outfile=NULL, type="interleaved") {
     
-
-    
     fas <- readBStringSet(fasfile)
 
     res <- bs_filter(fas, pattern, by, ignore.case)

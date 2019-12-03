@@ -24,4 +24,3 @@ combine 2 fasta files into 1
 \author{
 Guangchuang Yu
 }
-

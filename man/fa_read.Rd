@@ -4,10 +4,12 @@
 \alias{fa_read}
 \title{fa_read}
 \usage{
-fa_read(file)
+fa_read(file, type = "DNA")
 }
 \arguments{
 \item{file}{fasta file}
+
+\item{type}{one of 'DNA', 'RNA', 'AA' or 'UNKNOWN'}
 }
 \value{
 BStringSet object
@@ -18,4 +20,3 @@ read fasta file
 \author{
 Guangchuang Yu
 }
-

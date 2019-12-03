@@ -18,4 +18,3 @@ read aligned sequences in phylip format
 \author{
 ygc
 }
-

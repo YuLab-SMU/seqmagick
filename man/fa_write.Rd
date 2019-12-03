@@ -16,10 +16,9 @@ fa_write(x, outfile, type = "interleaved")
 \description{
 write fasta file
 }
-\author{
-Guangchuang Yu
-}
 \references{
 \url{http://evolution.genetics.washington.edu/phylip/doc/sequence.html}
 }
-
+\author{
+Guangchuang Yu
+}

@@ -24,4 +24,3 @@ biological sequence filter by searching pattern
 \author{
 Guangchuang Yu
 }
-

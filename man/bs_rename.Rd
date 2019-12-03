@@ -26,4 +26,3 @@ rename sequence
 \author{
 Guangchuang Yu
 }
-

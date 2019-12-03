@@ -22,4 +22,3 @@ sequence alignment
 \author{
 Guangchuang Yu
 }
-

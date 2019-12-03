@@ -25,4 +25,3 @@ any '-' character at start/end of the sequence (aligned seqs may contains '-' at
 \author{
 Guangchuang Yu
 }
-

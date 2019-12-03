@@ -29,4 +29,3 @@ fasta filter by searching pattern
 \author{
 Guangchuang Yu
 }
-

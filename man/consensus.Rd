@@ -20,4 +20,3 @@ consensus of aligned sequences
 \author{
 Guangchuang Yu
 }
-

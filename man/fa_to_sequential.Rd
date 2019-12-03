@@ -17,4 +17,3 @@ convert fasta file to sequential format
 \author{
 Guangchuang Yu
 }
-

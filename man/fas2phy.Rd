@@ -19,4 +19,3 @@ convert fasta (aligned sequences) to phylip format
 \author{
 ygc
 }
-

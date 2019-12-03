@@ -20,4 +20,3 @@ convert bam file to aligned fasta file
 \author{
 guangchuang yu
 }
-

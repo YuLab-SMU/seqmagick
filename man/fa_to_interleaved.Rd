@@ -17,4 +17,3 @@ convert fasta file to interleaved format
 \author{
 Guangchuang Yu
 }
-

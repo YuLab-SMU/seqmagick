@@ -3,12 +3,21 @@
 ##'
 ##' @title fa_read
 ##' @param file fasta file
+##' @param type one of 'DNA', 'RNA', 'AA' or 'UNKNOWN'
 ##' @return BStringSet object
 ##' @importFrom Biostrings readBStringSet
+##' @importFrom Biostrings readDNAStringSet
+##' @importFrom Biostrings readRNAStringSet
+##' @importFrom Biostrings readAAStringSet
 ##' @export
 ##' @author Guangchuang Yu
-fa_read <- function(file) {
-    readBStringSet(file)
+fa_read <- function(file, type = "DNA") {
+    switch(type,
+           DNA = readDNAStringSet(file),
+           RNA = readRNAStringSet(file),
+           AA  = readAAStringSet(file),
+           UNKNOWN = readBStringSet(file)
+           )
 }
 
 
@@ -56,6 +65,25 @@ phy_read <- function(file) {
     }
 
     names(seq_str) <- nm
-    BStringSet(seq_str)
+    ## BStringSet(seq_str)
+
+    switch(guess_sequence_type(seq_str[1]),
+           DNA = DNAStringSet(seq_str),
+           RNA = RNAStringSet(seq_str),
+           AA = AAStringSet(seq_str))
 }
 
+guess_sequence_type <- function(string) {
+    a <- strsplit(toupper(string), split="")[[1]]
+    freq <- mean(a %in% c('A', 'C', 'G', 'T', 'X', 'N', '-') )
+    if (freq > 0.9) {
+        return('DNA')
+    }
+
+    freq <- mean(a %in% c('A', 'C', 'G', 'U', 'X', 'N', '-') )
+    if (freq > 0.9) {
+        return('RNA')
+    }
+
+    return('AA')
+}

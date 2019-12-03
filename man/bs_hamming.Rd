@@ -22,4 +22,3 @@ hamming distances of sequences
 \author{
 Guangchuang Yu
 }
-

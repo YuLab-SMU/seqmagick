@@ -22,4 +22,3 @@ according to first token (eg accession number)
 \author{
 Guangchuang Yu
 }
-

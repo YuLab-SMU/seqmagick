@@ -28,4 +28,3 @@ rename fasta sequence name
 \author{
 Guangchuang Yu
 }
-

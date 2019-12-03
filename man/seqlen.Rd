@@ -18,4 +18,3 @@ sequence length
 \author{
 guangchuang yu
 }
-

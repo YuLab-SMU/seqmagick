@@ -22,4 +22,3 @@ get id at specific position
 \author{
 guangchuang yu
 }
-
