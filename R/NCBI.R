@@ -35,7 +35,7 @@ download_genbank_item <- function(acc, db="nuccore", format = "genbank", outfile
     if (db != "nuccore") {
         stop("currently, only nuccore is supported...")
     }
-    url <- paste0("www.ncbi.nlm.nih.gov/sviewer/viewer.cgi?tool=portal&sendto=on&log$=seqview&db=",
+    url <- paste0("https://www.ncbi.nlm.nih.gov/sviewer/viewer.cgi?tool=portal&sendto=on&log$=seqview&db=",
                   db, '&dopt=', format, '&sort=&val=', acc)
 
     if (is.null(outfile)) {
@@ -44,8 +44,8 @@ download_genbank_item <- function(acc, db="nuccore", format = "genbank", outfile
             suffix <- '.fa'
         outfile <- paste0(acc, suffix)
     }
-
-    download.file(url=url, destfile = outfile, method="wget", ...)
+    
+    downloader::download(url=url, destfile = outfile,  ...)
     invisible(outfile)
 }
 
