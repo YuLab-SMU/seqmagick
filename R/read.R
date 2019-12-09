@@ -3,7 +3,7 @@
 ##'
 ##' @title fa_read
 ##' @param file fasta file
-##' @param type one of 'DNA', 'RNA', 'AA' or 'UNKNOWN'
+##' @param type one of 'DNA', 'RNA', 'AA', 'unknown' or 'auto'
 ##' @return BStringSet object
 ##' @importFrom Biostrings readBStringSet
 ##' @importFrom Biostrings readDNAStringSet
@@ -11,7 +11,11 @@
 ##' @importFrom Biostrings readAAStringSet
 ##' @export
 ##' @author Guangchuang Yu
-fa_read <- function(file, type = "DNA") {
+fa_read <- function(file, type = "auto") {
+    type <- match.arg(type, c("DNA", "RNA", "AA", "unknown", "auto" ))
+    if (type == "auto") {
+        type <- guess_sequence_type(file)
+    }
     switch(type,
            DNA = readDNAStringSet(file),
            RNA = readRNAStringSet(file),

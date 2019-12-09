@@ -4,12 +4,12 @@
 \alias{fa_read}
 \title{fa_read}
 \usage{
-fa_read(file, type = "DNA")
+fa_read(file, type = "auto")
 }
 \arguments{
 \item{file}{fasta file}
 
-\item{type}{one of 'DNA', 'RNA', 'AA' or 'UNKNOWN'}
+\item{type}{one of 'DNA', 'RNA', 'AA', 'unknown' or 'auto'}
 }
 \value{
 BStringSet object

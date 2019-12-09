@@ -4,8 +4,14 @@
 \alias{fa_filter}
 \title{fa_filter}
 \usage{
-fa_filter(fasfile, pattern, by = "description", ignore.case = FALSE,
-  outfile = NULL, type = "interleaved")
+fa_filter(
+  fasfile,
+  pattern,
+  by = "description",
+  ignore.case = FALSE,
+  outfile = NULL,
+  type = "interleaved"
+)
 }
 \arguments{
 \item{fasfile}{input fasta file}

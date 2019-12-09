@@ -4,8 +4,7 @@
 \alias{download_genbank}
 \title{download_genbank}
 \usage{
-download_genbank(acc, db = "nuccore", format = "genbank",
-  outfile = NULL, ...)
+download_genbank(acc, db = "nuccore", format = "genbank", outfile = NULL, ...)
 }
 \arguments{
 \item{acc}{accession number(s)}

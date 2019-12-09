@@ -1,3 +1,7 @@
+# seqmagick 0.09
+
++ change default `type="auto"` for `fa_read` (2019-12-09, Mon)
+
 # seqmagick 0.08
 
 + CRAN release (2019-12-03, Tue)
