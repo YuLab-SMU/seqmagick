@@ -5,7 +5,7 @@
 ##' @param phyfile phylip file 
 ##' @param outfile output file
 ##' @param type one of interleaved and sequential
-##' @return NULL
+##' @return None
 ##' @export
 ##' @author Guangchuang Yu
 ##' @examples

@@ -7,7 +7,7 @@
 ##' @param name_file name file
 ##' @param sep separator
 ##' @param split logical, split result or not
-##' @return NULL
+##' @return None
 ##' @export
 ##' @author Guangchuang Yu
 renameTXT <- function(txt_file, name_file, sep="_", split=TRUE) {

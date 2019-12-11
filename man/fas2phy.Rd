@@ -13,6 +13,9 @@ fas2phy(fasfile, outfile = "out.phy", type = "sequential")
 
 \item{type}{one of interleaved and sequential}
 }
+\value{
+None
+}
 \description{
 convert fasta (aligned sequences) to phylip format
 }

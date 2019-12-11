@@ -13,6 +13,9 @@ phy2fas(phyfile, outfile = "out.fas", type = "interleaved")
 
 \item{type}{one of interleaved and sequential}
 }
+\value{
+None
+}
 \description{
 convert phylip file to fasta file
 }

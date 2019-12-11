@@ -5,7 +5,7 @@
 ##' @param fasfile aligned sequences in fasta format
 ##' @param outfile output file
 ##' @param type one of interleaved and sequential
-##' @return NULL
+##' @return None
 ##' @export
 ##' @author Guangchuang Yu
 ##' fa_file <- system.file("extdata/HA.fas", package="seqmagick")

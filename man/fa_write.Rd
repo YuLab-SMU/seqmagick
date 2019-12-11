@@ -13,6 +13,9 @@ fa_write(x, outfile, type = "interleaved")
 
 \item{type}{one of interleaved and sequential}
 }
+\value{
+None
+}
 \description{
 write fasta file
 }

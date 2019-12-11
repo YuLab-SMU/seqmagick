@@ -14,6 +14,11 @@ fa_to_sequential(file, outfile)
 
 \item{outfile}{output file}
 }
+\value{
+None
+
+None
+}
 \description{
 convert fasta file to interleaved format
 

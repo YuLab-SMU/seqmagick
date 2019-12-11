@@ -5,7 +5,7 @@
 ##' @param x XStringSet object
 ##' @param outfile output file
 ##' @param type one of interleaved and sequential
-##' @return NULL
+##' @return None
 ##' @export
 ##' @author Guangchuang Yu
 ##' @references \url{http://evolution.genetics.washington.edu/phylip/doc/sequence.html}
@@ -30,7 +30,7 @@ fa_write <- function(x, outfile, type="interleaved") {
 ##' @param x XStringSet object
 ##' @param outfile output file
 ##' @param type one of interleaved and sequential 
-##' @return NULL
+##' @return None
 ##' @export
 ##' @author Guangchuang Yu
 ##' @examples

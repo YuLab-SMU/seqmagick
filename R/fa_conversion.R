@@ -5,7 +5,7 @@
 ##' @rdname fa_conversion
 ##' @param file fasta file
 ##' @param outfile output file
-##' @return NULL
+##' @return None
 ##' @export
 ##' @author Guangchuang Yu
 ##' @examples
@@ -26,7 +26,7 @@ fa_to_interleaved <- function(file, outfile) {
 ##' @rdname fa_conversion
 ##' @param file fasta file
 ##' @param outfile output file
-##' @return NULL
+##' @return None
 ##' @export
 ##' @author Guangchuang Yu
 fa_to_sequential <- function(file, outfile) {

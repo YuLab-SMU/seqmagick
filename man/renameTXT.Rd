@@ -15,6 +15,9 @@ renameTXT(txt_file, name_file, sep = "_", split = TRUE)
 
 \item{split}{logical, split result or not}
 }
+\value{
+None
+}
 \description{
 rename txt file (eg Description line of fasta file)
 according to first token (eg accession number)

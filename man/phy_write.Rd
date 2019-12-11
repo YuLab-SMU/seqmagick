@@ -13,6 +13,9 @@ phy_write(x, outfile, type = "sequential")
 
 \item{type}{one of interleaved and sequential}
 }
+\value{
+None
+}
 \description{
 write phylip file
 }
