@@ -10,11 +10,10 @@
 ##' @author Guangchuang Yu
 ##' @examples
 ##' fa_file <- system.file("extdata/HA.fas", package="seqmagick")
-##' x <- fa_read(fa_file)
 ##' fa1 <- tempfile(fileext = '.fa')
 ##' fa2 <- tempfile(fileext = '.fa')
-##' fa_to_interleaved(x, fa1)
-##' fa_to_sequential(x, fa2)
+##' fa_to_interleaved(fa_file, fa1)
+##' fa_to_sequential(fa_file, fa2)
 fa_to_interleaved <- function(file, outfile) {
     fa_write(readBStringSet(file), outfile, type="interleaved")
 }
