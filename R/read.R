@@ -11,6 +11,9 @@
 ##' @importFrom Biostrings readAAStringSet
 ##' @export
 ##' @author Guangchuang Yu
+##' @examples
+##' fa_file <- system.file("extdata/HA.fas", package="seqmagick")
+##' fa_read(fa_file)
 fa_read <- function(file, type = "auto") {
     type <- match.arg(type, c("DNA", "RNA", "AA", "unknown", "auto" ))
     if (type == "auto") {
@@ -33,7 +36,10 @@ fa_read <- function(file, type = "auto") {
 ##' @importFrom Biostrings BStringSet
 ##' @return BStringSet object
 ##' @export
-##' @author ygc
+##' @author Guangchuang Yu
+##' @examples
+##' phy_file <- system.file("extdata/HA.phy", package="seqmagick")
+##' phy_read(phy_file)
 phy_read <- function(file) {
     info <- getPhyInfo(file)
     phy <- readLines(file)

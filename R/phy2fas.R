@@ -8,6 +8,10 @@
 ##' @return NULL
 ##' @export
 ##' @author Guangchuang Yu
+##' @examples
+##' phy_file <- system.file("extdata/HA.phy", package="seqmagick")
+##' fa_file <- tempfile(fileext = '.fas')
+##' phy2fas(phy_file, fa_file)
 phy2fas <- function(phyfile, outfile="out.fas", type="interleaved") {
     x <- phy_read(phyfile)
     fa_write(x, outfile, type)

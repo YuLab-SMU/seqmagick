@@ -10,6 +10,12 @@
 ##' @importFrom utils txtProgressBar
 ##' @export
 ##' @author Guangchuang Yu
+##' @examples
+##' fa_file <- system.file("extdata/HA.fas", package="seqmagick")
+##' x <- fa_read(fa_file)
+##' ## align first 5 sequences, use `bs_aln(x)` to align all sequences
+##' aln <- bs_aln(x[1:5])
+##' bs_hamming(aln)
 bs_hamming <- function(x, count_indel=FALSE, ...) {
     n <- length(x)
     if (n < 2) {

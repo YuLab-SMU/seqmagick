@@ -2,11 +2,19 @@
 ##'
 ##' 
 ##' @title consensus
+##' @rdname consensus
 ##' @param x XStringSet or XMultipleAlignment object
 ##' @param type currently, only DNA supported
 ##' @return consensus sequence string
 ##' @export
 ##' @author Guangchuang Yu
+##' @examples
+##' fa_file <- system.file("extdata/HA.fas", package="seqmagick")
+##' x <- fa_read(fa_file)
+##' ## align first 5 sequences, use `bs_aln(x)` to align all sequences
+##' aln <- bs_aln(x[1:5])
+##' ## or bs_consensus(aln)
+##' consensus(aln)
 consensus <- function(x, type="DNA") {
     BStringSet(x) %>% bs_consensus
 }
@@ -15,6 +23,7 @@ consensus <- function(x, type="DNA") {
 ##'
 ##' 
 ##' @title bs_consensus
+##' @rdname consensus
 ##' @param x BStringSet object
 ##' @param type currently, only DNA supported
 ##' @param r if any NT > r, it will be selected as representative base

@@ -11,6 +11,11 @@
 ##' @importFrom magrittr %>%
 ##' @export
 ##' @author Guangchuang Yu
+##' @examples
+##' tmpgb <- tempfile(fileext = '.gb')
+##' tmpfa <- tempfile(fileext = '.fa')
+##' download_genbank(acc='AB115403', format='genbank', outfile=tmpgb)
+##' download_genbank(acc='AB115403', format='fasta', outfile=tmpfa)
 download_genbank <- function(acc, db="nuccore", format = "genbank", outfile=NULL, ...) {
     if (!is.null(outfile) && (length(outfile) != length(acc))) {
         stop("'outfile' & 'acc' should be equal length...")

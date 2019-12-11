@@ -39,6 +39,10 @@ fa_filter <- function(fasfile, pattern, by='description', ignore.case=FALSE,
 ##' @importFrom magrittr %<>%
 ##' @export
 ##' @author Guangchuang Yu
+##' @examples
+##' fa_file <- system.file("extdata/HA.fas", package="seqmagick")
+##' x <- fa_read(fa_file)
+##' bs_filter(x, 'ATGAAAGTAAAA', by='sequence')
 bs_filter <- function(x, pattern, by='description', ignore.case=FALSE) {
     by <- match.arg(by, c("description", "sequence"))
     
