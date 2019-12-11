@@ -1,6 +1,6 @@
 Package: seqmagick
 Title: Sequence Manipulation Utilities
-Version: 0.0.9
+Version: 0.1.0
 Authors@R: c(
     person("Guangchuang", "Yu",     email = "guangchuangyu@gmail.com", role = c("aut", "cre"), comment = c(ORCID = "0000-0002-6485-8781"))
     )
