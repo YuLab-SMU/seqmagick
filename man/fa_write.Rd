@@ -16,6 +16,12 @@ fa_write(x, outfile, type = "interleaved")
 \description{
 write fasta file
 }
+\examples{
+phy_file <- system.file("extdata/HA.phy", package="seqmagick")
+x <- phy_read(phy_file)
+fa_file <- tempfile(fileext = '.fas')
+fa_write(x, fa_file)
+}
 \references{
 \url{http://evolution.genetics.washington.edu/phylip/doc/sequence.html}
 }

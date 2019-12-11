@@ -2,21 +2,40 @@
 % Please edit documentation in R/consensus.R
 \name{consensus}
 \alias{consensus}
+\alias{bs_consensus}
 \title{consensus}
 \usage{
 consensus(x, type = "DNA")
+
+bs_consensus(x, type = "DNA", r = 1)
 }
 \arguments{
-\item{x}{XStringSet or XMultipleAlignment object}
+\item{x}{BStringSet object}
 
 \item{type}{currently, only DNA supported}
+
+\item{r}{if any NT > r, it will be selected as representative base}
 }
 \value{
+consensus sequence string
+
 consensus sequence string
 }
 \description{
 consensus of aligned sequences
+
+consensus of aligned sequences
+}
+\examples{
+fa_file <- system.file("extdata/HA.fas", package="seqmagick")
+x <- fa_read(fa_file)
+## align first 5 sequences, use `bs_aln(x)` to align all sequences
+aln <- bs_aln(x[1:5])
+## or bs_consensus(aln)
+consensus(aln)
 }
 \author{
+Guangchuang Yu
+
 Guangchuang Yu
 }

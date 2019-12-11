@@ -23,6 +23,12 @@ output file vector
 \description{
 download genbank or fasta file by accession number
 }
+\examples{
+tmpgb <- tempfile(fileext = '.gb')
+tmpfa <- tempfile(fileext = '.fa')
+download_genbank(acc='AB115403', format='genbank', outfile=tmpgb)
+download_genbank(acc='AB115403', format='fasta', outfile=tmpfa)
+}
 \author{
 Guangchuang Yu
 }

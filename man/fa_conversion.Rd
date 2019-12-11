@@ -2,9 +2,12 @@
 % Please edit documentation in R/fa_conversion.R
 \name{fa_to_interleaved}
 \alias{fa_to_interleaved}
+\alias{fa_to_sequential}
 \title{fa_to_interleaved}
 \usage{
 fa_to_interleaved(file, outfile)
+
+fa_to_sequential(file, outfile)
 }
 \arguments{
 \item{file}{fasta file}
@@ -13,7 +16,19 @@ fa_to_interleaved(file, outfile)
 }
 \description{
 convert fasta file to interleaved format
+
+convert fasta file to sequential format
+}
+\examples{
+fa_file <- system.file("extdata/HA.fas", package="seqmagick")
+x <- fa_read(fa_file)
+fa1 <- tempfile(fileext = '.fa')
+fa2 <- tempfile(fileext = '.fa')
+fa_to_interleaved(x, fa1)
+fa_to_sequential(x, fa2)
 }
 \author{
+Guangchuang Yu
+
 Guangchuang Yu
 }

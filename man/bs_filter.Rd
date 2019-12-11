@@ -21,6 +21,11 @@ BStringSet object
 \description{
 biological sequence filter by searching pattern
 }
+\examples{
+fa_file <- system.file("extdata/HA.fas", package="seqmagick")
+x <- fa_read(fa_file)
+bs_filter(x, 'ATGAAAGTAAAA', by='sequence')
+}
 \author{
 Guangchuang Yu
 }

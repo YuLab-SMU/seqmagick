@@ -17,5 +17,8 @@ fas2phy(fasfile, outfile = "out.phy", type = "sequential")
 convert fasta (aligned sequences) to phylip format
 }
 \author{
-ygc
+Guangchuang Yu
+fa_file <- system.file("extdata/HA.fas", package="seqmagick")
+phy_file <- tempfile(fileext = ".phy")
+fas2phy(fa_file, phy_file)
 }

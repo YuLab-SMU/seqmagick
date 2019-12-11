@@ -7,7 +7,7 @@
 get_id(x, sep = " ", position)
 }
 \arguments{
-\item{x}{x}
+\item{x}{sequence description line}
 
 \item{sep}{separator to split x}
 
@@ -19,6 +19,11 @@ id
 \description{
 get id at specific position
 }
+\examples{
+fa_file <- system.file("extdata/HA.fas", package="seqmagick")
+x <- fa_read(fa_file)
+get_id(names(x)[1:5], sep = " ", position=1)
+}
 \author{
-guangchuang yu
+Guangchuang Yu
 }

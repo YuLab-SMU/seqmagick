@@ -16,6 +16,12 @@ phy_write(x, outfile, type = "sequential")
 \description{
 write phylip file
 }
+\examples{
+fa_file <- system.file("extdata/HA.fas", package="seqmagick")
+x <- phy_read(fa_file)
+phy_file <- tempfile(fileext = '.phy')
+phy_write(x, phy_file)
+}
 \author{
 Guangchuang Yu
 }

@@ -16,5 +16,5 @@ numeric vector
 sequence length
 }
 \author{
-guangchuang yu
+Guangchuang Yu
 }

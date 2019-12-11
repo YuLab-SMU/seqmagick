@@ -17,6 +17,10 @@ BStringSet object
 \description{
 read fasta file
 }
+\examples{
+fa_file <- system.file("extdata/HA.fas", package="seqmagick")
+fa_read(fa_file)
+}
 \author{
 Guangchuang Yu
 }

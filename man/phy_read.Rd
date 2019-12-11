@@ -15,6 +15,10 @@ BStringSet object
 \description{
 read aligned sequences in phylip format
 }
+\examples{
+phy_file <- system.file("extdata/HA.phy", package="seqmagick")
+phy_read(phy_file)
+}
 \author{
-ygc
+Guangchuang Yu
 }

@@ -9,6 +9,11 @@
 ##' @export
 ##' @author Guangchuang Yu
 ##' @references \url{http://evolution.genetics.washington.edu/phylip/doc/sequence.html}
+##' @examples
+##' phy_file <- system.file("extdata/HA.phy", package="seqmagick")
+##' x <- phy_read(phy_file)
+##' fa_file <- tempfile(fileext = '.fas')
+##' fa_write(x, fa_file)
 fa_write <- function(x, outfile, type="interleaved") {
     type <- match.arg(type, c("interleaved", "sequential"))
     if (type == "interleaved") {
@@ -28,6 +33,11 @@ fa_write <- function(x, outfile, type="interleaved") {
 ##' @return NULL
 ##' @export
 ##' @author Guangchuang Yu
+##' @examples
+##' fa_file <- system.file("extdata/HA.fas", package="seqmagick")
+##' x <- phy_read(fa_file)
+##' phy_file <- tempfile(fileext = '.phy')
+##' phy_write(x, phy_file)
 phy_write <- function(x, outfile, type="sequential") {
     type <- match.arg(type, c("interleaved", "sequential"))
 

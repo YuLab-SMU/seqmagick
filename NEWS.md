@@ -1,5 +1,6 @@
 # seqmagick 0.09
 
++ add examples to function documents (2019-12-11, Wed)
 + change default `type="auto"` for `fa_read` (2019-12-09, Mon)
 
 # seqmagick 0.08

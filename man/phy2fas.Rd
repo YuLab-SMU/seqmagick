@@ -16,6 +16,11 @@ phy2fas(phyfile, outfile = "out.fas", type = "interleaved")
 \description{
 convert phylip file to fasta file
 }
+\examples{
+phy_file <- system.file("extdata/HA.phy", package="seqmagick")
+fa_file <- tempfile(fileext = '.fas')
+phy2fas(phy_file, fa_file)
+}
 \author{
 Guangchuang Yu
 }

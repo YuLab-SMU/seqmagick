@@ -5,7 +5,7 @@
 ##' @param fasfile fasta file
 ##' @return numeric vector
 ##' @export
-##' @author guangchuang yu
+##' @author Guangchuang Yu
 seqlen <- function(fasfile) {
   x <- fa_read(fasfile)
   yy <- toString(x)
