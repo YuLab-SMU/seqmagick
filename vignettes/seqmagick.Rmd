@@ -114,7 +114,7 @@ bs_consensus(aln)
 
 # Bugs/Feature requests
 
-If you have any, [let me know](https://github.com/GuangchuangYu/seqmagick/issues). Thx!
+If you have any, [let me know](https://github.com/YuLab-SMU/seqmagick/issues). Thx!
 
 # Session info
 
