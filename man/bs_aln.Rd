@@ -20,10 +20,11 @@ aligned sequences, XStringSet object
 sequence alignment
 }
 \examples{
+\dontrun{
 fa_file <- system.file("extdata/HA.fas", package="seqmagick")
 x <- fa_read(fa_file)
-## align first 5 sequences, use `bs_aln(x)` to align all sequences
-bs_aln(x[1:5])
+bs_aln(x)
+}
 }
 \author{
 Guangchuang Yu

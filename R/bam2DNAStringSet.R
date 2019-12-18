@@ -5,21 +5,20 @@
 ##' @param bamfile bam file
 ##' @param refseq refseq, DNAStringSet object
 ##' @return DNAStringSet object
-##' @importFrom GenomicAlignments stackStringsFromBam
-##' @importFrom GenomicRanges GRanges
-##' @importFrom IRanges IRanges
-##' @importFrom Rsamtools BamFile
 ##' @export
-##' @author guangchuang yu
+##' @author Guangchuang Yu
 bam2DNAStringSet <- function(bamfile, refseq) {
     w <- width(refseq)
     if (length(refseq) > 1) {
         stop("please use bam2DNAStringSet2...")
     }
-    pm <- GRanges(names(refseq), IRanges(1, w))
+    pm <- GenomicRanges::GRanges(names(refseq), IRanges::IRanges(1, w))
 
-    stackStringsFromBam(BamFile(bamfile), param=pm,
-                        Lpadding.letter='-', Rpadding.letter='-', use.names=TRUE)
+    GenomicAlignments::stackStringsFromBam(Rsamtools::BamFile(bamfile),
+                                          param=pm,
+                                          Lpadding.letter='-',
+                                          Rpadding.letter='-',
+                                          use.names=TRUE)
 
 }
 
@@ -31,7 +30,7 @@ bam2DNAStringSet <- function(bamfile, refseq) {
 ##' @param refseq refseq, DNAStringSet object
 ##' @return DNAStringSet object
 ##' @export
-##' @author guangchuang yu
+##' @author Guangchuang Yu
 bam2DNAStringSet2 <- function(bamfile, refseq) {
     lapply(seq_along(refseq), function(i) {
         bam2DNAStringSet(bamfile, refseq[i])

@@ -1,3 +1,7 @@
+# seqmagick 0.1.2
+
++ suggest instead of import muscle, GenomicAlignments, GenomicRanges, IRanges and Rsamtools (2019-12-18, Wed)
+
 # seqmagick 0.1.1
 
 + cran initial release (2019-12-17, Tue)
