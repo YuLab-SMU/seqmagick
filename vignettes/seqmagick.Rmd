@@ -29,7 +29,6 @@ knitr::opts_chunk$set(tidy = FALSE,
 ```{r echo=FALSE, results="hide", message=FALSE}
 library(magrittr)
 library(Biostrings)
-library(muscle)
 library("seqmagick")
 ```
 
@@ -50,7 +49,7 @@ readLines(tmpfa)
 
 ## fasta and phylip conversion
 
-```{r}
+```{r eval=F}
 fa_file <- system.file("extdata/HA.fas", package="seqmagick")
 ## use the small subset to save compilation time of the vignette
 fa2 <- tempfile(fileext = '.fa')
@@ -63,49 +62,38 @@ fa_read(fa2) %>% bs_aln(quiet=TRUE) %>% fa_write(alnfas)
 ## phylip format is only for aligned sequences
 tmpphy <- tempfile(fileext = ".phy")
 fas2phy(alnfas, tmpphy, type = 'sequential')
-readLines(tmpphy)[1:3]
 ```
 
 `seqmagick` supports both `sequential` and `interleaved` formats, users can specify the format by `type` parameter.
 
 
-```{r}
+```{r eval=F}
 phy2fas(tmpphy, alnfas, type = 'interleaved')
-readLines(alnfas)[1:4]
 ```
 
 
 ## interleaved and sequential format conversion
 
 
-```{r}
-readLines(fa2)[1:10]
-```
 
-This is a `fasta` file in `interleaved` format. We can convert it to `sequential` format.
-
-```{r}
+```{r eval=F}
 tmpfas <- tempfile(fileext='.fa')
 fa_read(fa2) %>% fa_write(tmpfas, type="sequential")
-readLines(tmpfas)[1:4]
 ```
 
-```{r}
+```{r eval=F} 
 tmpphy2 <- tempfile(fileext = '.phy')
 phy_read(tmpphy) %>% phy_write(tmpphy2, type="interleaved")
-readLines(tmpphy2)[1:4]
 ```
 
 # Sequence manipulation
 
 
-```{r}
+```{r eval=F}
 bs <- fa_read(fa_file)
 bs_filter(bs, 'ATGAAAGTAAAA', by='sequence')
 
 aln <- bs_filter(bs, 'ATGAAAGTAAAA', by='sequence') %>% bs_aln(quiet=TRUE)
-
-aln
 
 bs_consensus(aln)
 ```

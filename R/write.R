@@ -34,11 +34,13 @@ fa_write <- function(x, outfile, type="interleaved") {
 ##' @export
 ##' @author Guangchuang Yu
 ##' @examples
+##' \dontrun{
 ##' fa_file <- system.file("extdata/HA.fas", package="seqmagick")
 ##' x <- fa_read(fa_file)
 ##' aln <- bs_aln(x[1:5])
 ##' phy_file <- tempfile(fileext = '.phy')
 ##' phy_write(aln, phy_file)
+##' }
 phy_write <- function(x, outfile, type="sequential") {
     type <- match.arg(type, c("interleaved", "sequential"))
 
