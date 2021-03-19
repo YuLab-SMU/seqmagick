@@ -84,14 +84,39 @@ phy_read <- function(file) {
 }
 
 guess_sequence_type <- function(string) {
-    a <- strsplit(toupper(string), split="")[[1]]
-    freq <- mean(a %in% c('A', 'C', 'G', 'T', 'X', 'N', '-') )
-    if (freq > 0.9) {
+    seqstr <- readLines(string, n=3)
+    if (length(seqstr)==2 || grepl("^>", seqstr[[3]])){
+        # >seq1
+        # AGCGTACGTGACGTAGCGTAGC
+        # >seq2
+        a <- seqstr[2]
+    }else{
+        # >seq1
+        # ---------
+        # AGCG----C
+        # ---------
+        # >seq2
+        seqstr <- readLines(string, n=20)
+        seqind <- grep("^>", seqstr)
+        if (length(seqind)==1){
+            a <- paste0(seqstr[-1], collapse="")
+        }else{
+            inds <- seqind[1] + 1
+            inde <- seqind[2] - 1
+            a <- paste0(seqstr[inds:inde], collapse="")
+        }
+    }
+    a <- strsplit(toupper(a), split="")[[1]]
+    freq1 <- mean(a %in% c('A', 'C', 'G', 'T', 'X', 'N', '-') )
+    freq2 <- mean(a %in% c('A', 'C', 'G', 'T', 'N'))
+    if (freq1 > 0.9 && freq2 > 0) {
         return('DNA')
     }
 
-    freq <- mean(a %in% c('A', 'C', 'G', 'U', 'X', 'N', '-') )
-    if (freq > 0.9) {
+    freq3 <- mean(a %in% c('A', 'C', 'G', 'U', 'X', 'N', '-'))
+    freq4 <- mean(a %in% c('T'))
+    freq5 <- mean(a %in% c('U'))
+    if (freq3 > 0.9 && freq4==0 && freq5 > 0) {
         return('RNA')
     }
 
