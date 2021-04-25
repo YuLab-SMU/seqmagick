@@ -76,7 +76,6 @@ phy_read <- function(file) {
 
     names(seq_str) <- nm
     ## BStringSet(seq_str)
-
     switch(guess_sequence_type(seq_str[1]),
            DNA = DNAStringSet(seq_str),
            RNA = RNAStringSet(seq_str),
@@ -84,27 +83,31 @@ phy_read <- function(file) {
 }
 
 guess_sequence_type <- function(string) {
-    seqstr <- readLines(string, n=3)
-    if (length(seqstr)==2 || grepl("^>", seqstr[[3]])){
-        # >seq1
-        # AGCGTACGTGACGTAGCGTAGC
-        # >seq2
-        a <- seqstr[2]
-    }else{
-        # >seq1
-        # ---------
-        # AGCG----C
-        # ---------
-        # >seq2
-        seqstr <- readLines(string, n=20)
-        seqind <- grep("^>", seqstr)
-        if (length(seqind)==1){
-            a <- paste0(seqstr[-1], collapse="")
+    if (file.exists(string)){
+        seqstr <- readLines(string, n=3)
+        if (length(seqstr)==2 || grepl("^>", seqstr[[3]])){
+            # >seq1
+            # AGCGTACGTGACGTAGCGTAGC
+            # >seq2
+            a <- seqstr[2]
         }else{
-            inds <- seqind[1] + 1
-            inde <- seqind[2] - 1
-            a <- paste0(seqstr[inds:inde], collapse="")
+            # >seq1
+            # ---------
+            # AGCG----C
+            # ---------
+            # >seq2
+            seqstr <- readLines(string, n=20)
+            seqind <- grep("^>", seqstr)
+            if (length(seqind)==1){
+                a <- paste0(seqstr[-1], collapse="")
+            }else{
+                inds <- seqind[1] + 1
+                inde <- seqind[2] - 1
+                a <- paste0(seqstr[inds:inde], collapse="")
+            }
         }
+    }else{
+        a <- string
     }
     a <- strsplit(toupper(a), split="")[[1]]
     freq1 <- mean(a %in% c('A', 'C', 'G', 'T', 'X', 'N', '-') )
