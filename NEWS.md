@@ -1,3 +1,7 @@
+# seqmagick 0.1.6
+
++ `gb_read()` to parse 'GenBank' file (2023-06-27, Tue)
+
 # seqmagick 0.1.2
 
 + suggest instead of import muscle, GenomicAlignments, GenomicRanges, IRanges and Rsamtools (2019-12-18, Wed)

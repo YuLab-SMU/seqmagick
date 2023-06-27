@@ -125,3 +125,45 @@ guess_sequence_type <- function(string) {
 
     return('AA')
 }
+
+
+
+##' extract accession number and sequence from genbank file
+##'
+##' 
+##' @title gb_read
+##' @param file input genbank file
+##' @return sequence object
+##' @export
+##' @author Guangchuang Yu
+gb_read <- function(file) {
+    res <- vapply(file, gb_read_item, FUN.VALUE = character(1))
+    
+    f <- tempfile(fileext = ".fasta")
+    cat(res, file = f, sep="")
+    fa_read(f)
+}
+
+gb_read_item <- function(file) {
+    x <- readLines(file)
+    acc <- sub("\\w+\\s+(\\w+)$", "\\1", x[grep("^ACCESSION", x)])
+    src <- sub("SOURCE\\s+",  "", x[grep("^SOURCE",x)])
+    header <- paste0(src, "(", acc, ")")
+    i <- grep("ORIGIN", x)
+    ss <- x[(i+1):length(x)]
+    ss <- ss[1:(grep("//", ss) -1)]
+    ss <- gsub("\\s+\\d+", "", ss)
+    ss <- gsub("\\s+", "", ss)
+    ss <- paste0(ss, collapse = "")
+
+    # f <- tempfile(fileext = ".fasta")
+    # cat(">",  file = f, append = TRUE)
+    # cat(header,  file = f, append = TRUE, sep = "\n")
+    # cat(ss,  file = f, append = TRUE, sep = "\n")
+    # fa_read(f)
+
+    sprintf(">%s\n%s\n", header, ss)
+}
+
+
+

@@ -14,10 +14,11 @@ vignette:
 
 
 build:
-	cd ..;\
-	R CMD build $(PKGSRC)
-
-install:
+	#cd ..;\
+	#R CMD build $(PKGSRC)
+	Rscript -e 'devtools::build()'
+	
+install: build
 	cd ..;\
 	R CMD INSTALL $(PKGNAME)_$(PKGVERS).tar.gz
 

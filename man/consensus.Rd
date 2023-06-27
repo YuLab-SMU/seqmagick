@@ -38,6 +38,4 @@ consensus(aln)
 }
 \author{
 Guangchuang Yu
-
-Guangchuang Yu
 }

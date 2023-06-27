@@ -33,6 +33,4 @@ fa_to_sequential(fa_file, fa2)
 }
 \author{
 Guangchuang Yu
-
-Guangchuang Yu
 }
