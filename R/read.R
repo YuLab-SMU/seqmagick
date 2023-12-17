@@ -109,24 +109,39 @@ guess_sequence_type <- function(string) {
     }else{
         a <- string
     }
-    a <- strsplit(toupper(a), split="")[[1]]
-    freq1 <- mean(a %in% c('A', 'C', 'G', 'T', 'X', 'N', '-') )
-    freq2 <- mean(a %in% c('A', 'C', 'G', 'T', 'N'))
+#    a <- strsplit(toupper(a), split="")[[1]]
+    guess(a)
+#    freq1 <- mean(a %in% c('A', 'C', 'G', 'T', 'X', 'N', '-') )
+#    freq2 <- mean(a %in% c('A', 'C', 'G', 'T', 'N'))
+#    if (freq1 > 0.9 && freq2 > 0) {
+#        return('DNA')
+#    }
+#
+#    freq3 <- mean(a %in% c('A', 'C', 'G', 'U', 'X', 'N', '-'))
+#    freq4 <- mean(a %in% c('T'))
+#    freq5 <- mean(a %in% c('U'))
+#    if (freq3 > 0.9 && freq4==0 && freq5 > 0) {
+#        return('RNA')
+#    }
+#
+#    return('AA')
+}
+
+guess <- function(seq_str) {
+    seq_str <- strsplit(toupper(seq_str), split="")[[1]]
+    freq1 <- mean(seq_str %in% c('A', 'C', 'G', 'T', 'X', 'N', '-') )
+    freq2 <- mean(seq_str %in% c('A', 'C', 'G', 'T', 'N'))
     if (freq1 > 0.9 && freq2 > 0) {
         return('DNA')
     }
-
-    freq3 <- mean(a %in% c('A', 'C', 'G', 'U', 'X', 'N', '-'))
-    freq4 <- mean(a %in% c('T'))
-    freq5 <- mean(a %in% c('U'))
+    freq3 <- mean(seq_str %in% c('A', 'C', 'G', 'U', 'X', 'N', '-'))
+    freq4 <- mean(seq_str %in% c('T'))
+    freq5 <- mean(seq_str %in% c('U'))
     if (freq3 > 0.9 && freq4==0 && freq5 > 0) {
         return('RNA')
     }
-
     return('AA')
 }
-
-
 
 ##' extract accession number and sequence from genbank file
 ##'
@@ -165,5 +180,55 @@ gb_read_item <- function(file) {
     sprintf(">%s\n%s\n", header, ss)
 }
 
+filt_str <- function(str, to_filt = "") {
+    str[str != to_filt]
+}
 
-
+##' read mega file
+##'
+##'
+##' @title mega_read
+##' @param file mega file
+##' @param type one of 'DNA', 'RNA', 'AA', 'unknown' or 'auto'
+##' @return BStringSet object
+##' @importFrom Biostrings BStringSet
+##' @importFrom Biostrings DNAStringSet
+##' @importFrom Biostrings RNAStringSet
+##' @importFrom Biostrings AAStringSet
+##' @export
+##' @author Guangchuang Yu; Zijing Xie
+##' @examples
+##' mega_file <- system.file("extdata/rRNA.meg", package="seqmagick")
+##' mega_read(mega_file)
+mega_read <- function(file, type = "auto") {
+    mega <- readLines(con = file) |> filt_str()
+    mega <- gsub(pattern = "\\s+", replacement = "", mega) |>
+        paste(collapse = "\n")
+    mega <- strsplit(mega, split = "#")[[1]] |> filt_str()
+    mega <- mega[-1]
+    raw_result <- strsplit(mega, split = "\n") |> sapply(
+        function(x) {
+            seq_str <- paste(x[2:length(x)], collapse = "")
+            setNames(seq_str, x[1])
+        }
+    )
+    seq_mat <- strsplit(raw_result, split = "") |>
+        do.call(cbind, args = _)
+    for (i in seq_len(nrow(seq_mat))) {
+        seq_mat[i, ] <- gsub(pattern = "\\.",
+            replacement = seq_mat[i, 1], seq_mat[i, ])
+    }
+    seq_str <- apply(seq_mat, 2, function(x) {
+        paste(x, collapse = "")
+    })
+    type <- match.arg(type, c("DNA", "RNA", "AA", "unknown", "auto"))
+    if (type == "auto") {
+        type <- guess(seq_str[1])
+    }
+    switch(type,
+           DNA = DNAStringSet(seq_str),
+           RNA = RNAStringSet(seq_str),
+           AA  = AAStringSet(seq_str),
+           UNKNOWN = BStringSet(seq_str)
+           )
+}
