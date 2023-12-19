@@ -1,9 +1,9 @@
-##' read fasta file
+##' read sequence alignment file
 ##'
 ##'
-##' @title fa_read
-##' @param file fasta file
-##' @param type one of 'DNA', 'RNA', 'AA', 'unknown' or 'auto'
+##' @rdname msa-read
+##' @param file multiple sequence file
+##' @param type one of 'DNA', 'RNA', 'AA', 'Protein', 'unknown' or 'auto'
 ##' @return BStringSet object
 ##' @importFrom Biostrings readBStringSet
 ##' @importFrom Biostrings readDNAStringSet
@@ -14,15 +14,20 @@
 ##' @examples
 ##' fa_file <- system.file("extdata/HA.fas", package="seqmagick")
 ##' fa_read(fa_file)
+##' 
+##' mega_file <- system.file("extdata/mega/Crab_rRNA.meg", package="seqmagick")
+##' mega_read(mega_file)
 fa_read <- function(file, type = "auto") {
     type <- match.arg(type, c("DNA", "RNA", "AA", "unknown", "auto" ))
     if (type == "auto") {
         type <- guess_sequence_type(file)
     }
+    type <- toupper(type)
     switch(type,
            DNA = readDNAStringSet(file),
            RNA = readRNAStringSet(file),
            AA  = readAAStringSet(file),
+           PROTEIN  = readAAStringSet(file),
            UNKNOWN = readBStringSet(file)
            )
 }
@@ -167,3 +172,39 @@ gb_read_item <- function(file) {
 
 
 
+
+#' @rdname msa-read
+#' @export
+clw_read <- function(file, type = "auto") {
+    x <- readLines(file)
+    program <- toupper(sub("(\\w+)\\s.*", "\\1", x[1], perl=use_perl()))
+    if (!program %in% c("CLUSTAL", "MUSCLE")) {
+        stop("wrong file format")
+    }
+    i <- grep("^\\s+", x, perl=use_perl())
+    x <- x[-c(1, i)]
+    
+    y <- parse_name_seq(x)
+    y <- collapse_seqs(y$seqname, y$seqs)
+    build_seq_object(y, type)
+}
+
+#' @rdname msa-read
+#' @export
+#' @importFrom stats setNames
+sth_read <- function(file, type = "auto") {
+    # STOCKHOLM file
+    x <- readLines(file)
+    if (!grepl("STOCKHOLM", x[1], perl=use_perl())) {
+        stop("wrong file format")
+    }
+
+    seqname <- x[grep("^#=GS", x, perl=use_perl())]
+    seqname <- sub("#=GS\\s(\\S+)\\s.*", "\\1", seqname, perl=use_perl())
+
+    key <- sub("^(\\S+)\\s.*", "\\1", x, perl=use_perl())
+    value <- sub("^\\S+\\s+", "", x, perl=use_perl())
+    i <- which(key %in% seqname)
+    seqs <- setNames(value[i], key[i])
+    build_seq_object(seqs, type)
+}

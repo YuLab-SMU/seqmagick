@@ -1,6 +1,6 @@
 Package: seqmagick
 Title: Sequence Manipulation Utilities
-Version: 0.1.6.001
+Version: 0.1.7
 Authors@R: c(
     person("Guangchuang", "Yu",     email = "guangchuangyu@gmail.com", role = c("aut", "cre"), comment = c(ORCID = "0000-0002-6485-8781"))
     )
@@ -10,7 +10,9 @@ Depends:
 Imports:
     Biostrings,
     magrittr,
-    utils
+    stats,
+    utils,
+    yulab.utils (> 0.1.1)
 Suggests:
     downloader,
     knitr,
