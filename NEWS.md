@@ -1,3 +1,7 @@
+# seqmagick 0.1.6.001
+
++ `mega_read()` to parse various file types of MEGA sequence alignment (2023-12-19, Tue)
+
 # seqmagick 0.1.6
 
 + `gb_read()` to parse 'GenBank' file (2023-06-27, Tue)
