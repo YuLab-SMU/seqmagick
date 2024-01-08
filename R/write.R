@@ -8,7 +8,7 @@
 ##' @return None
 ##' @export
 ##' @author Guangchuang Yu
-##' @references \url{http://evolution.genetics.washington.edu/phylip/doc/sequence.html}
+##' @references \url{https://phylipweb.github.io/phylip/}
 ##' @examples
 ##' phy_file <- system.file("extdata/HA.phy", package="seqmagick")
 ##' x <- phy_read(phy_file)

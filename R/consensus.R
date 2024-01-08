@@ -88,7 +88,9 @@ DNA_ambiguity_code <- function(NT) {
     ## X      G or A or T or C
     ## N      G or A or T or C
 
-    NT <- NT %>% unique %>% toupper %>% sort
+    NT <- NT |> unique() |>
+        toupper() |>
+        base::sort()
     
     if (length(NT) < 2) {
         return(NT)
