@@ -26,7 +26,7 @@ fa_file <- tempfile(fileext = '.fas')
 fa_write(x, fa_file)
 }
 \references{
-\url{http://evolution.genetics.washington.edu/phylip/doc/sequence.html}
+\url{https://phylipweb.github.io/phylip/}
 }
 \author{
 Guangchuang Yu
