@@ -56,4 +56,50 @@ download_genbank_item <- function(acc, db="nuccore", format = "genbank", outfile
     invisible(outfile)
 }
 
+##' download fasta sequence by accession number and read as sequence object
+##'
+##'
+##' @title ncbi_fa_read
+##' @param acc accession number(s)
+##' @param db supported db, currently 'nuccore'
+##' @param type one of 'DNA', 'RNA', 'AA', 'unknown' or 'auto'
+##' @param ... additional parameters passed to downloader::download
+##' @return BStringSet object
+##' @export
+##' @author Guangchuang Yu
+##' @examples
+##' \dontrun{
+##' x <- ncbi_fa_read(c('AB115403', 'AB115403.1'))
+##' x
+##' }
+ncbi_fa_read <- function(acc, db="nuccore", type = "auto", ...) {
+    if (length(acc) == 0) {
+        stop("'acc' is empty...")
+    }
+    if (anyNA(acc)) {
+        stop("'acc' contains NA...")
+    }
+
+    acc <- as.character(acc)
+    acc <- gsub("\\.\\d+", "", acc)
+
+    tmpdir <- tempfile("seqmagick-ncbi-")
+    dir.create(tmpdir)
+    on.exit(unlink(tmpdir, recursive=TRUE, force=TRUE), add=TRUE)
+
+    destfile <- file.path(tmpdir, paste0(make.unique(acc), ".fa"))
+    download_genbank(acc, db=db, format="fasta", outfile=destfile, ...)
+
+    f <- tempfile(fileext = ".fasta")
+    for (i in seq_along(destfile)) {
+        x <- readLines(destfile[i], warn=FALSE)
+        if (length(x) == 0) {
+            next
+        }
+        cat(x, file = f, append = TRUE, sep="\n")
+        cat("\n", file = f, append = TRUE)
+    }
+
+    fa_read(f, type=type)
+}
 
