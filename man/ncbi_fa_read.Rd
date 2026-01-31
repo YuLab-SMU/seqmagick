@@ -4,7 +4,7 @@
 \alias{ncbi_fa_read}
 \title{ncbi_fa_read}
 \usage{
-ncbi_fa_read(acc, db = "nuccore", type = "auto", ...)
+ncbi_fa_read(acc, db = "nuccore", type = "auto")
 }
 \arguments{
 \item{acc}{accession number(s)}
@@ -12,8 +12,6 @@ ncbi_fa_read(acc, db = "nuccore", type = "auto", ...)
 \item{db}{supported db, currently 'nuccore'}
 
 \item{type}{one of 'DNA', 'RNA', 'AA', 'unknown' or 'auto'}
-
-\item{...}{additional parameters passed to downloader::download}
 }
 \value{
 BStringSet object

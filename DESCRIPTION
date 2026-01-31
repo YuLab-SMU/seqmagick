@@ -17,9 +17,8 @@ Imports:
     magrittr,
     stats,
     utils,
-    yulab.utils (> 0.1.1)
+    yulab.utils (> 0.1.6)
 Suggests:
-    downloader,
     knitr,
     rmarkdown,
     GenomicAlignments,
